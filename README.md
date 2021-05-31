@@ -6,13 +6,16 @@
 # Create a namespace jenkins
 - kubectl create ns jenkins
 
+# clone the directory that has all the yaml files
+- git clone https://github.com/nalapatt/KubernetesJenkinsCICDPipeline.git
+- cd KubernetesJenkinsCICDPipeline
+- 
 # Install Jenkins on the jenkins master node
-
 # Get all the files to create jenkins deployment, services, pv, pvc etc
 
 - Apply the different yaml files to install jenkins and the services in the namespace
 - kubectl -n jenkins apply -f jenkins-deployment.yaml
-- kubectl -n jenkins apply -f jenkins-pv.yaml
+- kubectl -n jenkins apply -f pv.yaml
 - kubectl -n jenkins apply -f pvc.yaml
 - kubectl -n jenkins apply -f service.yaml
 - kubectl -n jenkins apply -f rbac.yaml
@@ -24,10 +27,11 @@
 - kubectl -n jenkins get svc
 
 # to see the logs and get the password to get into jenkins
-- kubectl -n jenkins logs jenkins-b4d464798-kgnd9 
+- kubectl -n jenkins logs jenkins-b4d464798-kgnd9 ( this is the name of the pod it will be different for you )
 
 # you will see the password copy and paste in the browser
-- 2a07abf46ba844299b32fae96b19aabe
+88af960bf4a54d24b82fb4aee4ddf6db
+- 2a07abf46ba844299b32fae96b19aabe ( this will be different for you)
 
 # portforward to port 8080 to go into the terminal
 - kubectl -n jenkins port-forward jenkins-b4d464798-kgnd9 8080
