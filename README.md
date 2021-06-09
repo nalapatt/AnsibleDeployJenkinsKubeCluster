@@ -1,14 +1,16 @@
 # KubernetesJenkinsCICDPipeline
-- In this project I am creating a kubernetes cluster with a jenkins master, I will use jenkins to deploy to dockerhub and slaves
+- In this project Jenkins is installed using an ansible playbood, this creates the pv, pvc and services  required for jenkins
 
-# Create a kubernetes cluster with one slave node
+# Create 4 ec2 instances with an ansible controller and enough instances for a master and 2 nodes
+# Create a kubernetes cluster using the Ansible-playbook-k8s-setup repo
 
+## install jenkins in this cluster
 # Create a namespace jenkins
 - kubectl create ns jenkins
 
 # clone the directory that has all the yaml files
-- git clone https://github.com/nalapatt/KubernetesJenkinsCICDPipeline.git
-- cd KubernetesJenkinsCICDPipeline
+- git clone https://github.com/nalapatt/AnsibleDeployJenkinsKubeCluster
+- cd AnsibleDeployJenkinsKubeCluster
 - 
 # Install Jenkins on the jenkins master node
 # Get all the files to create jenkins deployment, services, pv, pvc etc
